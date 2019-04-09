@@ -29,6 +29,7 @@ const Routes = () => {
         />
         <Route path="/racialminorities" component={RacialMinorities} />
         <Route path="/economicjustice" component={EconomicJustice} />
+        <Route path="/" component={FullChart} />
       </Switch>
     </React.Fragment>
   );
