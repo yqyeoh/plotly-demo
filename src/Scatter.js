@@ -126,21 +126,41 @@ class Scatter extends Component {
         <Plot
           data={[
             {
-              selected: {
-                marker: {
-                  color: "blue"
-                }
-              },
-              unselected: {
-                marker: {
-                  color: "red"
-                }
-              },
+              r: [0, 6.2],
+              theta: [0, 0],
+              type: "scatterpolar",
+              line: { dash: "dash", color: "gray", width: 1 },
+              hoverinfo: "text"
+            },
+            {
+              r: [0, 6.2],
+              theta: [0, 45],
+              type: "scatterpolar",
+              line: { dash: "dash", color: "gray", width: 1 },
+              hoverinfo: "text"
+            },
+            {
+              r: [0, 6.2],
+              theta: [0, 90],
+              type: "scatterpolar",
+              line: { dash: "dash", color: "gray", width: 1 },
+              hoverinfo: "text"
+            },
+            {
+              r: [1, 2.6, 4.0, 5.5],
+              theta: [90, 90, 90, 90],
+              text: ["open", "informed", "engaged", "activated"],
+              mode: "text",
+              type: "scatterpolar",
+              hoverinfo: "none",
+              textfont: { size: 15 }
+            },
 
+            {
               r: this.state.radius,
               theta: this.state.theta,
               text: this.state.names,
-              hoverinfo: "text",
+              hoverinfo: "none",
 
               hoverlabel: {
                 bgcolor: "black",
@@ -156,30 +176,29 @@ class Scatter extends Component {
                 opacity: 0.5
               },
               type: "scatterpolar",
-              subplot: "polar",
-              hoveron: "points"
-            }
-            // {
-            //   r: this.state.radiusOne,
-            //   theta: this.state.thetaOne,
-            //   text: this.state.namesOne,
-            //   hoverinfo: "text",
-            //   hoverlabel: {
-            //     bgcolor: "black",
-            //     bordercolor: "black",
-            //     font: { family: "calibri", color: "white", size: 20 }
-            //   },
-            //   mode: "markers",
+              subplot: "polar"
+            },
+            {
+              r: this.state.radiusOne,
+              theta: this.state.thetaOne,
+              text: this.state.namesOne,
+              hoverinfo: "text",
+              hoverlabel: {
+                bgcolor: "black",
+                bordercolor: "black",
+                font: { family: "calibri", color: "white", size: 20 }
+              },
+              mode: "markers",
 
-            //   marker: {
-            //     symbol: "circle",
-            //     color: "rgb(50,200,50)",
-            //     size: 13,
-            //     opacity: 0.5
-            //   },
-            //   type: "scatterpolar",
-            //   subplot: "polar1"
-            // }
+              marker: {
+                symbol: "circle",
+                color: "rgb(50,200,50)",
+                size: 13,
+                opacity: 0.5
+              },
+              type: "scatterpolar",
+              subplot: "polar1"
+            }
           ]}
           layout={{
             dragmode: "pan",
@@ -209,7 +228,6 @@ class Scatter extends Component {
               opacity: 1,
               layer: "above traces",
               radialaxis: {
-                line: { dash: "dot", width: 4 },
                 showline: false,
                 ticks: "",
                 angle: 0,
@@ -221,41 +239,20 @@ class Scatter extends Component {
                 },
                 tickmode: "array",
                 tickvals: [0, 1.9, 3.35, 4.8, 6.2],
-                ticktext: [
-                  "open".padStart(29),
-                  "informed".padStart(22),
-                  "engaged".padStart(21),
-                  "activated".padStart(23),
-                  ""
-                ],
-                range: [0, 6.2]
+                showticklabels: false,
+                range: [0, 6.5]
               },
               angularaxis: {
+                showgrid: false,
                 tickmode: "array",
+                showline: false,
 
-                tickvals: [
-                  0,
-                  22.5,
-                  45,
-                  67.5,
-                  90,
-                  112.5,
-                  135,
-                  180,
-                  225,
-                  270,
-                  315
-                ],
+                tickvals: [22.5, 67.5, 112.5],
 
-                ticks: "outside",
+                ticks: "",
                 ticktext: [
-                  "",
-                  "Diversity & Inclusion",
-                  "",
                   "Religious Minorities",
-                  "",
                   "Economic Justice",
-                  "",
                   "Equitable Tech"
                 ],
                 tickfont: {
