@@ -28,6 +28,7 @@ class Scatter extends Component {
       newTheta = [],
       newNames = [];
     findAllExcept(this.state.searchField).forEach(function(element) {
+      _.times(8, () => newNames.push(element.name));
       element.categories.forEach(function(element) {
         newRadius.push(
           element.level === 1
@@ -46,7 +47,6 @@ class Scatter extends Component {
             element.category.sector[1] - 10
           )
         );
-        newNames.push(element.name);
       });
     });
     this.setState({ radius: newRadius, theta: newTheta, names: newNames });
@@ -56,6 +56,7 @@ class Scatter extends Component {
       newTheta = [],
       newNames = [];
     findOne(this.state.searchField).forEach(function(element) {
+      _.times(8, () => newNames.push("You"));
       element.categories.forEach(function(element) {
         newRadius.push(
           element.level === 1
@@ -74,7 +75,6 @@ class Scatter extends Component {
             element.category.sector[1] - 10
           )
         );
-        newNames.push(element.name);
       });
     });
     this.setState({
@@ -124,6 +124,8 @@ class Scatter extends Component {
           <h1>{this.state.searchField}</h1>
         </div>
         <Plot
+          useResizeHandler={true}
+          style={{ width: "100%", height: "100%" }}
           data={[
             {
               r: [0, 6.2],
